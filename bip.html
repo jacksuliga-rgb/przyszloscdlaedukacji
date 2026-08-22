@@ -15,41 +15,37 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
   :root{
-    --bip:#0b5cad;          /* urzędowy niebieski BIP */
-    --bip-dark:#084a8c;
-    --bip-soft:#eaf2fb;
-    --ink:#1f2937;
-    --gray:#4b5563;
-    --muted:#6b7280;
-    --line:#dbe4ee;
-    --paper:#ffffff;
-    --bg:#f4f7fb;
-    --radius:14px;
+    --bip:#0b5cad;--bip-dark:#084a8c;--bip-soft:#eaf2fb;
+    --ink:#1f2937;--gray:#4b5563;--muted:#6b7280;--line:#dbe4ee;--paper:#fff;--bg:#f4f7fb;--radius:14px;--focus:#0b5cad;
   }
   *{margin:0;padding:0;box-sizing:border-box}
   html{scroll-behavior:smooth}
   body{font-family:'Inter',system-ui,-apple-system,sans-serif;color:var(--ink);background:var(--bg);line-height:1.65;-webkit-font-smoothing:antialiased}
+  body.editing{padding-bottom:86px}
   a{color:var(--bip);text-decoration:none}
   a:hover{text-decoration:underline}
   h1,h2,h3{line-height:1.2;font-weight:800;letter-spacing:-.01em}
   .wrap{max-width:1000px;margin:0 auto;padding:0 20px}
+  :focus-visible{outline:3px solid var(--focus);outline-offset:2px;border-radius:6px}
+  @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
 
-  /* topbar */
   .top{background:var(--bip);color:#fff}
-  .top-inner{display:flex;align-items:center;justify-content:space-between;gap:16px;height:64px}
-  .top .logo{display:flex;align-items:center;gap:12px;font-weight:800}
+  .top-inner{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:64px;padding:10px 0;flex-wrap:wrap}
+  .top .logo{display:flex;align-items:center;gap:12px;font-weight:800;color:#fff}
+  .top .logo img{height:34px;width:auto;display:block;background:#fff;border-radius:8px;padding:3px 5px}
   .top .logo .badge{background:#fff;color:var(--bip);border-radius:8px;padding:4px 9px;font-size:.95rem;font-weight:800;letter-spacing:.5px}
   .top .logo small{display:block;font-weight:500;font-size:.72rem;color:#cfe0f5}
-  .top a.back{color:#fff;font-size:.9rem;font-weight:600;border:1.5px solid rgba(255,255,255,.55);padding:8px 16px;border-radius:999px}
-  .top a.back:hover{background:rgba(255,255,255,.15);text-decoration:none}
+  .top-actions{display:flex;gap:10px;align-items:center}
+  .top a.back,.top .edit-btn{color:#fff;font-size:.9rem;font-weight:700;border:1.5px solid rgba(255,255,255,.55);
+    padding:8px 16px;border-radius:999px;background:transparent;cursor:pointer;font-family:inherit}
+  .top a.back:hover,.top .edit-btn:hover{background:rgba(255,255,255,.15);text-decoration:none}
 
-  /* header */
   .head{background:var(--paper);border-bottom:1px solid var(--line)}
-  .head-inner{padding:34px 0 30px}
-  .head h1{font-size:clamp(1.5rem,3.2vw,2rem);margin-bottom:8px}
+  .head-inner{padding:30px 0 26px}
+  .head img.logo{height:64px;width:auto;display:block;margin-bottom:14px}
+  .head h1{font-size:clamp(1.4rem,3.2vw,1.9rem);margin-bottom:8px}
   .head p{color:var(--muted)}
 
-  /* layout */
   .grid{display:grid;grid-template-columns:250px 1fr;gap:30px;padding:34px 0 60px;align-items:start}
   nav.toc{position:sticky;top:16px;background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:14px}
   nav.toc b{display:block;font-size:.78rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);padding:6px 10px}
@@ -66,19 +62,32 @@
   ul.clean li{padding-left:20px;position:relative;color:var(--gray)}
   ul.clean li::before{content:"›";position:absolute;left:4px;color:var(--bip);font-weight:800}
 
-  /* tabela danych */
   table.data{width:100%;border-collapse:collapse}
   table.data th,table.data td{text-align:left;padding:11px 12px;border-bottom:1px solid var(--line);vertical-align:top;font-size:.95rem}
   table.data th{width:38%;color:var(--muted);font-weight:600}
   table.data td{color:var(--ink)}
   @media (max-width:520px){table.data th{width:44%}}
 
-  /* placeholder wyróżnienie */
-  .todo{background:#fff8e6;border:1px dashed #e6b800;color:#8a6d00;border-radius:6px;padding:1px 8px;font-size:.85rem;font-weight:600;display:inline-block}
   .note{background:var(--bip-soft);border-left:4px solid var(--bip);border-radius:8px;padding:14px 16px;color:var(--bip-dark);font-size:.92rem}
-
   .btn{display:inline-flex;align-items:center;gap:.4em;background:var(--bip);color:#fff;padding:11px 20px;border-radius:999px;font-weight:700;font-size:.95rem}
   .btn:hover{background:var(--bip-dark);text-decoration:none}
+
+  /* ---- POLA EDYTOWALNE ---- */
+  .fld{display:inline}
+  .fld.empty{background:#fff8e6;border:1px dashed #e6b800;color:#8a6d00;border-radius:6px;padding:1px 8px;font-size:.9rem;font-weight:600}
+  body.editing .fld{outline:2px dashed var(--bip);outline-offset:2px;border-radius:4px;padding:2px 8px;min-width:60px;
+    display:inline-block;cursor:text;background:#fff;color:var(--ink);font-weight:400;font-size:.95rem;border:0}
+  body.editing .fld:empty::before{content:attr(data-ph);color:#9aa7b5}
+
+  /* ---- PASEK EDYCJI ---- */
+  #bar{display:none;position:fixed;left:0;right:0;bottom:0;z-index:100;background:#0e1726;color:#fff;
+    padding:12px 16px;gap:10px;align-items:center;justify-content:center;flex-wrap:wrap;box-shadow:0 -6px 20px rgba(0,0,0,.3)}
+  #bar .msg{font-size:.88rem;color:#c3cfe0;margin-right:auto}
+  #bar button{border:0;border-radius:999px;padding:10px 18px;font-weight:700;font-size:.9rem;cursor:pointer;font-family:inherit}
+  .b-dl{background:#fff;color:#0b5cad}
+  .b-clear{background:#f59e0b;color:#3a2600}
+  .b-exit{background:#374151;color:#fff}
+  @media(max-width:560px){#bar .msg{width:100%;margin:0 0 6px}}
 
   footer.ft{background:#0e1726;color:#c3cfe0;padding:30px 0;font-size:.9rem}
   footer.ft .ft-inner{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;align-items:center}
@@ -94,18 +103,22 @@
 
 <div class="top">
   <div class="wrap top-inner">
-    <a href="bip.html" class="logo" style="color:#fff">
-      <span class="badge">BIP</span>
+    <a href="bip.html" class="logo">
+      <img src="favicon-180.png" alt="" aria-hidden="true">
       <span>Biuletyn Informacji Publicznej<small>Fundacja Przyszłość dla Edukacji</small></span>
     </a>
-    <a href="index.html" class="back">← Strona szkoły</a>
+    <div class="top-actions">
+      <button id="editBtn" class="edit-btn" type="button" onclick="enterEdit()">✎ Tryb edycji</button>
+      <a href="index.html" class="back">← Strona szkoły</a>
+    </div>
   </div>
 </div>
 
 <div class="head">
   <div class="wrap head-inner">
-    <h1>Niepubliczna Szkoła Podstawowa Fundacji Przyszłość dla Edukacji</h1>
-    <p>Biuletyn Informacji Publicznej · ul. Piękna 30/32, Łódź</p>
+    <img src="logo.png" class="logo" alt="Niepubliczna Szkoła Podstawowa Fundacji Przyszłość dla Edukacji">
+    <h1>Biuletyn Informacji Publicznej</h1>
+    <p>Niepubliczna Szkoła Podstawowa Fundacji Przyszłość dla Edukacji · ul. Piękna 30/32, Łódź</p>
   </div>
 </div>
 
@@ -129,7 +142,7 @@
 
   <main>
     <div class="note">
-      Poniższe pola oznaczone jako <span class="todo">DO UZUPEŁNIENIA</span> należy wypełnić rzeczywistymi danymi szkoły przed publikacją (m.in. NIP, REGON, numer RSPO, numer wpisu do ewidencji, dane inspektora ochrony danych, treść statutu).
+      Pola z danymi można zaktualizować bezpośrednio na stronie — kliknij <strong>„✎ Tryb edycji"</strong> (u góry) i podaj kod. Zmiany zapisują się w Twojej przeglądarce; aby opublikować je dla wszystkich, użyj przycisku <strong>„⬇ Pobierz bip-dane.json"</strong> i wgraj ten plik do repozytorium.
     </div>
 
     <section class="card" id="dane">
@@ -140,9 +153,9 @@
         <tr><th>Telefon</th><td><a href="tel:+48666666666">+48 666 666 666</a></td></tr>
         <tr><th>E-mail</th><td><a href="mailto:przyszloscdlaedukacji@gmail.com">przyszloscdlaedukacji@gmail.com</a></td></tr>
         <tr><th>Strona WWW</th><td><a href="index.html">strona szkoły</a></td></tr>
-        <tr><th>NIP</th><td><span class="todo">DO UZUPEŁNIENIA</span></td></tr>
-        <tr><th>REGON</th><td><span class="todo">DO UZUPEŁNIENIA</span></td></tr>
-        <tr><th>Numer RSPO</th><td><span class="todo">DO UZUPEŁNIENIA</span></td></tr>
+        <tr><th>NIP</th><td><span class="fld" data-k="nip" data-ph="NIP – do uzupełnienia"></span></td></tr>
+        <tr><th>REGON</th><td><span class="fld" data-k="regon" data-ph="REGON – do uzupełnienia"></span></td></tr>
+        <tr><th>Numer RSPO</th><td><span class="fld" data-k="rspo" data-ph="RSPO – do uzupełnienia"></span></td></tr>
         <tr><th>Godziny pracy sekretariatu</th><td>Poniedziałek – Piątek: 8:00 – 16:00</td></tr>
       </table>
     </section>
@@ -151,9 +164,9 @@
       <h2><span class="n">2</span> Status prawny i podstawa działania</h2>
       <p>Szkoła jest szkołą niepubliczną w rozumieniu ustawy z dnia 14 grudnia 2016 r. — Prawo oświatowe, posiadającą uprawnienia szkoły publicznej i realizującą podstawę programową kształcenia ogólnego określoną przez Ministra Edukacji.</p>
       <ul class="clean">
-        <li>Wpis do ewidencji szkół i placówek niepublicznych prowadzonej przez Miasto Łódź — nr wpisu: <span class="todo">DO UZUPEŁNIENIA</span></li>
+        <li>Wpis do ewidencji szkół i placówek niepublicznych prowadzonej przez Miasto Łódź — nr wpisu: <span class="fld" data-k="wpis" data-ph="numer wpisu"></span></li>
         <li>Organ sprawujący nadzór pedagogiczny: Łódzki Kurator Oświaty</li>
-        <li>Data rozpoczęcia działalności: <span class="todo">DO UZUPEŁNIENIA</span></li>
+        <li>Data rozpoczęcia działalności: <span class="fld" data-k="data_start" data-ph="RRRR-MM-DD"></span></li>
       </ul>
     </section>
 
@@ -161,9 +174,9 @@
       <h2><span class="n">3</span> Organ prowadzący</h2>
       <table class="data">
         <tr><th>Nazwa</th><td>Fundacja Przyszłość dla Edukacji</td></tr>
-        <tr><th>Adres</th><td><span class="todo">DO UZUPEŁNIENIA</span></td></tr>
-        <tr><th>Numer KRS</th><td><span class="todo">DO UZUPEŁNIENIA</span></td></tr>
-        <tr><th>Zarząd Fundacji</th><td><span class="todo">DO UZUPEŁNIENIA</span></td></tr>
+        <tr><th>Adres</th><td><span class="fld" data-k="organ_adres" data-ph="adres fundacji"></span></td></tr>
+        <tr><th>Numer KRS</th><td><span class="fld" data-k="organ_krs" data-ph="numer KRS"></span></td></tr>
+        <tr><th>Zarząd Fundacji</th><td><span class="fld" data-k="organ_zarzad" data-ph="skład zarządu"></span></td></tr>
       </table>
     </section>
 
@@ -181,29 +194,29 @@
     <section class="card" id="organy">
       <h2><span class="n">5</span> Organy szkoły</h2>
       <ul class="clean">
-        <li><strong>Dyrektor szkoły</strong> — <span class="todo">imię i nazwisko DO UZUPEŁNIENIA</span></li>
+        <li><strong>Dyrektor szkoły</strong> — <span class="fld" data-k="dyrektor" data-ph="imię i nazwisko"></span></li>
         <li><strong>Rada Pedagogiczna</strong></li>
-        <li><strong>Samorząd Uczniowski</strong> <span class="muted">(jeśli powołany)</span></li>
-        <li><strong>Rada Rodziców</strong> <span class="muted">(jeśli powołana)</span></li>
+        <li><strong>Samorząd Uczniowski</strong></li>
+        <li><strong>Rada Rodziców</strong></li>
       </ul>
     </section>
 
     <section class="card" id="statut">
       <h2><span class="n">6</span> Statut i dokumenty wewnętrzne</h2>
       <ul class="clean">
-        <li>Statut szkoły — <span class="todo">wgraj plik statut.pdf i podlinkuj</span></li>
-        <li>Regulaminy (świetlicy, oceniania, wewnątrzszkolnego systemu oceniania) — <span class="todo">DO UZUPEŁNIENIA</span></li>
-        <li>Procedury bezpieczeństwa — <span class="todo">DO UZUPEŁNIENIA</span></li>
+        <li>Statut szkoły: <span class="fld" data-k="statut" data-ph="np. adres pliku statut.pdf"></span></li>
+        <li>Regulaminy (świetlicy, oceniania, WSO): <span class="fld" data-k="regulaminy" data-ph="do uzupełnienia"></span></li>
+        <li>Procedury bezpieczeństwa: <span class="fld" data-k="procedury" data-ph="do uzupełnienia"></span></li>
       </ul>
-      <p class="note" style="margin-top:14px">Wskazówka: dokumenty publikuj jako pliki PDF w tym samym folderze i podmieniaj etykiety na linki, np. <code>&lt;a href="statut.pdf"&gt;Statut szkoły (PDF)&lt;/a&gt;</code>.</p>
+      <p class="note" style="margin-top:14px">Wskazówka: dokumenty PDF wgraj do repozytorium (ten sam folder), a w polu wpisz nazwę pliku, np. <code>statut.pdf</code>.</p>
     </section>
 
     <section class="card" id="majatek">
       <h2><span class="n">7</span> Majątek i finansowanie</h2>
       <p>Działalność szkoły finansowana jest z dotacji z budżetu Miasta Łodzi (na podstawie ustawy o finansowaniu zadań oświatowych) oraz z opłat (czesne) i środków organu prowadzącego.</p>
       <ul class="clean">
-        <li>Informacja o dotacji na bieżący rok — <span class="todo">DO UZUPEŁNIENIA</span></li>
-        <li>Sprawozdania finansowe organu prowadzącego — <span class="todo">DO UZUPEŁNIENIA</span></li>
+        <li>Informacja o dotacji na bieżący rok: <span class="fld" data-k="dotacja" data-ph="do uzupełnienia"></span></li>
+        <li>Sprawozdania finansowe organu prowadzącego: <span class="fld" data-k="sprawozdania" data-ph="do uzupełnienia"></span></li>
       </ul>
     </section>
 
@@ -231,8 +244,8 @@
       <h2><span class="n">10</span> Ochrona danych osobowych (RODO)</h2>
       <table class="data">
         <tr><th>Administrator danych</th><td>Niepubliczna Szkoła Podstawowa Fundacji Przyszłość dla Edukacji, ul. Piękna 30/32, Łódź</td></tr>
-        <tr><th>Inspektor Ochrony Danych (IOD)</th><td><span class="todo">imię, nazwisko i e-mail DO UZUPEŁNIENIA</span></td></tr>
-        <tr><th>Klauzula informacyjna</th><td><span class="todo">wgraj i podlinkuj dokument</span></td></tr>
+        <tr><th>Inspektor Ochrony Danych (IOD)</th><td><span class="fld" data-k="iod" data-ph="imię, nazwisko i e-mail"></span></td></tr>
+        <tr><th>Klauzula informacyjna</th><td><span class="fld" data-k="klauzula" data-ph="np. klauzula-rodo.pdf"></span></td></tr>
       </table>
     </section>
 
@@ -249,26 +262,108 @@
       <h2><span class="n">12</span> Redakcja Biuletynu</h2>
       <table class="data">
         <tr><th>Podmiot udostępniający</th><td>Niepubliczna Szkoła Podstawowa Fundacji Przyszłość dla Edukacji</td></tr>
-        <tr><th>Osoba odpowiedzialna za treść</th><td><span class="todo">DO UZUPEŁNIENIA</span></td></tr>
-        <tr><th>Osoba wprowadzająca</th><td><span class="todo">DO UZUPEŁNIENIA</span></td></tr>
-        <tr><th>Data ostatniej aktualizacji</th><td><span id="upd"></span></td></tr>
+        <tr><th>Osoba odpowiedzialna za treść</th><td><span class="fld" data-k="red_tresc" data-ph="imię i nazwisko"></span></td></tr>
+        <tr><th>Osoba wprowadzająca informacje</th><td><span class="fld" data-k="red_wprow" data-ph="imię i nazwisko"></span></td></tr>
+        <tr><th>Data ostatniej aktualizacji</th><td><span class="fld" data-k="data_akt" data-ph="RRRR-MM-DD"></span></td></tr>
       </table>
       <p style="margin-top:16px"><a href="index.html" class="btn">← Powrót na stronę szkoły</a></p>
     </section>
   </main>
 </div>
 
+<div id="bar" role="region" aria-label="Pasek edycji BIP">
+  <span class="msg">✎ Tryb edycji włączony — zmiany zapisują się w tej przeglądarce.</span>
+  <button type="button" class="b-dl" onclick="downloadData()">⬇ Pobierz bip-dane.json</button>
+  <button type="button" class="b-clear" onclick="clearLocal()">🗑 Wyczyść moje zmiany</button>
+  <button type="button" class="b-exit" onclick="exitEdit()">🔒 Zakończ edycję</button>
+</div>
+
 <footer class="ft">
   <div class="wrap ft-inner">
     <span>© <span id="year"></span> Niepubliczna Szkoła Podstawowa Fundacji Przyszłość dla Edukacji</span>
-    <span><a href="index.html">Strona szkoły</a> · <a href="https://portal.librus.pl/rodzina/synergia/loguj" target="_blank" rel="noopener">Librus Synergia ↗</a></span>
+    <span><a href="index.html">Strona szkoły</a> · <a href="deklaracja-dostepnosci.html">Deklaracja dostępności</a> · <a href="https://portal.librus.pl/rodzina/synergia/loguj" target="_blank" rel="noopener">Librus Synergia ↗</a></span>
   </div>
 </footer>
 
 <script>
-  var y=new Date();
-  document.getElementById('year').textContent=y.getFullYear();
-  document.getElementById('upd').textContent=y.toLocaleDateString('pl-PL');
+  var FIELDS_DEFAULT = {
+    nip:'',regon:'',rspo:'',wpis:'',data_start:'',
+    organ_adres:'',organ_krs:'',organ_zarzad:'',
+    dyrektor:'',statut:'',regulaminy:'',procedury:'',
+    dotacja:'',sprawozdania:'',iod:'',klauzula:'',
+    red_tresc:'',red_wprow:'',data_akt:''
+  };
+  var LS_KEY='bipLocal', CODE='3032';
+  var store=Object.assign({},FIELDS_DEFAULT);
+  var editMode=false;
+
+  function today(){return new Date().toLocaleDateString('pl-PL');}
+  function loadLocal(){try{return JSON.parse(localStorage.getItem(LS_KEY))||{};}catch(e){return {};}}
+  function saveLocal(){try{localStorage.setItem(LS_KEY,JSON.stringify(store));}catch(e){}}
+
+  function renderAll(){
+    document.querySelectorAll('.fld').forEach(function(el){
+      var k=el.dataset.k, v=(store[k]||'').trim();
+      if(editMode){ el.textContent=v; return; }
+      if(!v && k==='data_akt'){ el.textContent=today(); el.classList.remove('empty'); return; }
+      if(v){ el.textContent=v; el.classList.remove('empty'); }
+      else { el.textContent=el.dataset.ph||'— do uzupełnienia —'; el.classList.add('empty'); }
+    });
+  }
+
+  function mergeInto(src){ if(!src) return; Object.keys(src).forEach(function(k){ if(k in store) store[k]=src[k]; }); }
+
+  function initLoad(){
+    fetch('bip-dane.json',{cache:'no-store'})
+      .then(function(r){return r.ok?r.json():null;})
+      .then(function(pub){ mergeInto(pub); mergeInto(loadLocal()); renderAll(); })
+      .catch(function(){ mergeInto(loadLocal()); renderAll(); });
+  }
+
+  function onInput(e){ store[e.target.dataset.k]=e.target.textContent.trim(); saveLocal(); }
+
+  function enterEdit(){
+    var code=prompt('Podaj kod dostępu do edycji BIP:');
+    if(code===null) return;
+    if(code!==CODE){ alert('Nieprawidłowy kod.'); return; }
+    editMode=true;
+    document.body.classList.add('editing');
+    document.querySelectorAll('.fld').forEach(function(el){ el.setAttribute('contenteditable','true'); });
+    renderAll();
+    document.getElementById('bar').style.display='flex';
+    document.getElementById('editBtn').style.display='none';
+  }
+
+  function exitEdit(){
+    editMode=false;
+    document.body.classList.remove('editing');
+    document.querySelectorAll('.fld').forEach(function(el){ el.removeAttribute('contenteditable'); });
+    renderAll();
+    document.getElementById('bar').style.display='none';
+    document.getElementById('editBtn').style.display='';
+  }
+
+  function downloadData(){
+    if(!store.data_akt) store.data_akt=today();
+    saveLocal(); renderAll();
+    var blob=new Blob([JSON.stringify(store,null,2)],{type:'application/json'});
+    var a=document.createElement('a');
+    a.href=URL.createObjectURL(blob); a.download='bip-dane.json';
+    document.body.appendChild(a); a.click(); a.remove();
+    alert('Pobrano plik bip-dane.json.\n\nAby zmiany zobaczyli wszyscy: wgraj ten plik do repozytorium (ten sam folder co bip.html) i zatwierdź (commit).');
+  }
+
+  function clearLocal(){
+    if(!confirm('Usunąć Twoje lokalne zmiany i wrócić do opublikowanej wersji?')) return;
+    try{localStorage.removeItem(LS_KEY);}catch(e){}
+    store=Object.assign({},FIELDS_DEFAULT);
+    exitEdit();
+    initLoad();
+  }
+
+  document.getElementById('year').textContent=new Date().getFullYear();
+  document.querySelectorAll('.fld').forEach(function(el){ el.addEventListener('input',onInput); });
+  initLoad();
 </script>
 </body>
 </html>
