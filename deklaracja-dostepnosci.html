@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Deklaracja dostępności — NSP Fundacji Przyszłość dla Edukacji</title>
+<meta name="description" content="Deklaracja dostępności cyfrowej strony internetowej Niepublicznej Szkoły Podstawowej Fundacji Przyszłość dla Edukacji w Łodzi.">
+<meta name="theme-color" content="#7c3aed">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%238b5cf6'/%3E%3Cstop offset='.5' stop-color='%23ec4899'/%3E%3Cstop offset='1' stop-color='%23f97316'/%3E%3C/linearGradient%3E%3C/defs%3E%3Ccircle cx='16' cy='16' r='16' fill='url(%23g)'/%3E%3Ctext x='16' y='22' font-family='Arial,sans-serif' font-size='18' font-weight='700' fill='white' text-anchor='middle'%3EF%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --violet:#7c3aed;--violet-dark:#6d28d9;--soft:#f5f3ff;
+    --ink:#1f2937;--gray:#3f4653;--muted:#5c6673;--line:#e5e7eb;--paper:#fff;--bg:#faf9fe;--focus:#7c3aed;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:'Inter',system-ui,-apple-system,sans-serif;color:var(--ink);background:var(--bg);line-height:1.7}
+  a{color:var(--violet-dark);text-decoration:underline}
+  a:hover{text-decoration:none}
+  h1,h2{line-height:1.2;font-weight:800;letter-spacing:-.01em}
+  .wrap{max-width:860px;margin:0 auto;padding:0 20px}
+  a.skip{position:absolute;left:-9999px;top:0;background:#fff;color:var(--violet-dark);padding:12px 20px;font-weight:700;z-index:100}
+  a.skip:focus{left:0}
+  :focus-visible{outline:3px solid var(--focus);outline-offset:2px;border-radius:6px}
+  @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+
+  .top{background:linear-gradient(135deg,#7c3aed,#be185d);color:#fff}
+  .top-inner{display:flex;justify-content:space-between;align-items:center;gap:16px;height:66px}
+  .top .logo{display:flex;align-items:center;gap:10px;color:#fff;text-decoration:none;font-weight:800}
+  .top .logo .b{background:#fff;color:var(--violet-dark);border-radius:50%;width:36px;height:36px;display:grid;place-items:center;font-weight:800}
+  .top a.back{color:#fff;border:1.5px solid rgba(255,255,255,.6);padding:8px 16px;border-radius:999px;text-decoration:none;font-weight:600;font-size:.9rem}
+  .top a.back:hover{background:rgba(255,255,255,.15)}
+
+  header.head{background:var(--paper);border-bottom:1px solid var(--line);padding:34px 0}
+  header.head h1{font-size:clamp(1.5rem,3.4vw,2.1rem)}
+  header.head p{color:var(--muted);margin-top:8px}
+
+  main{padding:34px 0 60px}
+  section{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:24px 26px;margin-bottom:18px}
+  section h2{font-size:1.2rem;color:var(--violet-dark);margin-bottom:12px}
+  section p{color:var(--gray);margin-bottom:12px}
+  section p:last-child{margin-bottom:0}
+  ul{margin:0 0 12px 22px;color:var(--gray)}
+  ul li{margin-bottom:6px}
+  ul:last-child{margin-bottom:0}
+  table{width:100%;border-collapse:collapse;margin-bottom:4px}
+  th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:top;font-size:.97rem}
+  th{width:42%;color:var(--muted);font-weight:600}
+  @media(max-width:520px){th{width:48%}}
+  .status{display:inline-block;background:#fef3c7;color:#8a5a00;border-radius:999px;padding:4px 14px;font-weight:700;font-size:.92rem}
+  .todo{background:#fff8e6;border:1px dashed #e6b800;color:#8a6d00;border-radius:6px;padding:1px 8px;font-size:.85rem;font-weight:600}
+  .box{background:var(--soft);border-left:4px solid var(--violet);border-radius:8px;padding:14px 16px;color:var(--violet-dark);font-size:.95rem}
+  footer.ft{background:#1f1147;color:#d7ccf5;padding:26px 0;font-size:.9rem;text-align:center}
+  footer.ft a{color:#c4b5fd}
+</style>
+</head>
+<body>
+<a class="skip" href="#tresc">Przejdź do treści</a>
+
+<div class="top">
+  <div class="wrap top-inner">
+    <a href="index.html" class="logo"><span class="b" aria-hidden="true">F</span> Fundacja Przyszłość dla Edukacji</a>
+    <a href="index.html" class="back">← Strona szkoły</a>
+  </div>
+</div>
+
+<header class="head">
+  <div class="wrap">
+    <h1>Deklaracja dostępności</h1>
+    <p>Niepubliczna Szkoła Podstawowa Fundacji Przyszłość dla Edukacji</p>
+  </div>
+</header>
+
+<main id="tresc">
+  <div class="wrap">
+
+    <div class="box" style="margin-bottom:18px">
+      Pola oznaczone jako <span class="todo">DO UZUPEŁNIENIA</span> należy wypełnić przed publikacją: daty, dane koordynatora ds. dostępności oraz opis dostępności architektonicznej budynku. Status zgodności potwierdź po przeprowadzeniu samooceny lub audytu.
+    </div>
+
+    <section>
+      <h2>Wstęp</h2>
+      <p><strong>Niepubliczna Szkoła Podstawowa Fundacji Przyszłość dla Edukacji</strong> zobowiązuje się zapewnić dostępność swojej strony internetowej zgodnie z ustawą z dnia 4 kwietnia 2019 r. o dostępności cyfrowej stron internetowych i aplikacji mobilnych podmiotów publicznych.</p>
+      <p>Niniejsza deklaracja dostępności dotyczy strony internetowej: <a href="index.html">https://jacksuliga-rgb.github.io/przyszloscdlaedukacji/</a>.</p>
+      <table>
+        <tr><th>Data publikacji strony internetowej</th><td><span class="todo">DO UZUPEŁNIENIA (RRRR-MM-DD)</span></td></tr>
+        <tr><th>Data ostatniej istotnej aktualizacji</th><td><span id="dzis"></span></td></tr>
+      </table>
+    </section>
+
+    <section>
+      <h2>Status pod względem zgodności z ustawą</h2>
+      <p>Strona internetowa jest <span class="status">częściowo zgodna</span> z ustawą z dnia 4 kwietnia 2019 r. o dostępności cyfrowej stron internetowych i aplikacji mobilnych podmiotów publicznych z powodu niezgodności lub wyłączeń wymienionych poniżej.</p>
+      <p><strong>Treści niedostępne / wyłączenia:</strong></p>
+      <ul>
+        <li>Część dokumentów udostępnianych w formacie PDF może nie być w pełni dostępna cyfrowo (np. skany) — będą sukcesywnie poprawiane lub udostępniane w alternatywnej formie na wniosek.</li>
+        <li>Niektóre elementy dekoracyjne (ikony, emotikony) mają charakter ozdobny i są pomijane przez czytniki ekranu.</li>
+      </ul>
+      <p><strong>Zastosowane udogodnienia:</strong></p>
+      <ul>
+        <li>Serwis jest responsywny i działa na komputerach, tabletach i telefonach.</li>
+        <li>Możliwość nawigacji za pomocą samej klawiatury oraz widoczny fokus na elementach.</li>
+        <li>Link „Przejdź do treści" na początku każdej strony.</li>
+        <li>Zachowanie odpowiedniego kontrastu tekstu względem tła (WCAG 2.1 AA).</li>
+        <li>Poprawna struktura nagłówków i znaczniki nawigacyjne (landmarki).</li>
+        <li>Respektowanie ustawienia „ogranicz animacje / ruch" w systemie (prefers-reduced-motion).</li>
+        <li>Możliwość powiększenia strony w przeglądarce bez utraty czytelności.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Data sporządzenia deklaracji i metoda oceny</h2>
+      <table>
+        <tr><th>Data sporządzenia deklaracji</th><td><span id="dzis2"></span></td></tr>
+        <tr><th>Metoda przygotowania</th><td>Samoocena przeprowadzona przez podmiot publiczny</td></tr>
+        <tr><th>Data ostatniego przeglądu deklaracji</th><td><span id="dzis3"></span></td></tr>
+      </table>
+      <p>Deklarację należy poddawać przeglądowi co najmniej raz w roku oraz każdorazowo po istotnej zmianie strony.</p>
+    </section>
+
+    <section>
+      <h2>Skróty klawiaturowe</h2>
+      <p>Na stronie można korzystać ze standardowych skrótów klawiaturowych przeglądarki. Do przemieszczania się po elementach służy klawisz <strong>Tab</strong> (oraz <strong>Shift + Tab</strong> wstecz), a do powiększania i pomniejszania widoku — <strong>Ctrl + „+"</strong> i <strong>Ctrl + „−"</strong>.</p>
+    </section>
+
+    <section>
+      <h2>Informacje zwrotne i dane kontaktowe</h2>
+      <p>W przypadku problemów z dostępnością strony internetowej prosimy o kontakt.</p>
+      <table>
+        <tr><th>Osoba do kontaktu (koordynator ds. dostępności)</th><td><span class="todo">imię i nazwisko DO UZUPEŁNIENIA</span></td></tr>
+        <tr><th>E-mail</th><td><a href="mailto:przyszloscdlaedukacji@gmail.com">przyszloscdlaedukacji@gmail.com</a></td></tr>
+        <tr><th>Telefon</th><td><a href="tel:+48666666666">+48 666 666 666</a></td></tr>
+      </table>
+      <p>Tą samą drogą można składać wnioski o udostępnienie informacji niedostępnej oraz żądania zapewnienia dostępności.</p>
+    </section>
+
+    <section>
+      <h2>Procedura wnioskowo-skargowa</h2>
+      <p>Każdy ma prawo wystąpić z żądaniem zapewnienia dostępności cyfrowej strony internetowej, aplikacji lub jakiegoś ich elementu. Można także zażądać udostępnienia informacji w formach alternatywnych, np. odczytania niedostępnego cyfrowo dokumentu, opisania zawartości filmu bez audiodeskrypcji itp.</p>
+      <p>Żądanie powinno zawierać: dane osoby zgłaszającej, wskazanie, o którą stronę lub element chodzi, oraz sposób kontaktu. Jeżeli osoba żądająca zgłasza potrzebę otrzymania informacji w formie alternatywnej, powinna także określić dogodny dla niej sposób przedstawienia tej informacji.</p>
+      <p>Podmiot publiczny powinien zrealizować żądanie <strong>niezwłocznie, nie później niż w ciągu 7 dni</strong> od dnia wystąpienia z żądaniem. Jeżeli dotrzymanie tego terminu nie jest możliwe, podmiot niezwłocznie informuje o tym, kiedy realizacja żądania będzie możliwa, przy czym termin ten nie może być dłuższy niż <strong>2 miesiące</strong> od dnia wystąpienia z żądaniem.</p>
+      <p>Jeżeli zapewnienie dostępności cyfrowej nie jest możliwe, podmiot publiczny może zaproponować alternatywny sposób dostępu do informacji.</p>
+      <p>W przypadku odmowy realizacji żądania zapewnienia dostępności lub alternatywnego sposobu dostępu do informacji, wnoszący żądanie może złożyć <strong>skargę</strong> w sprawie zapewnienia dostępności cyfrowej. Po wyczerpaniu wskazanej procedury można także złożyć wniosek do <a href="https://www.rpo.gov.pl/" target="_blank" rel="noopener">Rzecznika Praw Obywatelskich</a>.</p>
+    </section>
+
+    <section>
+      <h2>Dostępność architektoniczna</h2>
+      <p>Adres: ul. Piękna 30/32, Łódź.</p>
+      <p>Poniższe informacje należy uzupełnić o rzeczywisty stan budynku szkoły:</p>
+      <ul>
+        <li>Opis wejścia do budynku i ewentualnych barier (schody, podjazd, próg) — <span class="todo">DO UZUPEŁNIENIA</span></li>
+        <li>Dostępność korytarzy, schodów, wind i platform — <span class="todo">DO UZUPEŁNIENIA</span></li>
+        <li>Toaleta dla osób z niepełnosprawnościami — <span class="todo">DO UZUPEŁNIENIA</span></li>
+        <li>Miejsca parkingowe dla osób z niepełnosprawnościami — <span class="todo">DO UZUPEŁNIENIA</span></li>
+        <li>Prawo wstępu z psem asystującym — <span class="todo">DO UZUPEŁNIENIA</span></li>
+        <li>Możliwość skorzystania z tłumacza polskiego języka migowego (PJM) — <span class="todo">DO UZUPEŁNIENIA</span></li>
+      </ul>
+    </section>
+
+  </div>
+</main>
+
+<footer class="ft">
+  <div class="wrap">
+    © <span id="year"></span> Niepubliczna Szkoła Podstawowa Fundacji Przyszłość dla Edukacji ·
+    <a href="index.html">Strona szkoły</a> · <a href="bip.html">BIP</a>
+  </div>
+</footer>
+
+<script>
+  var d=new Date();
+  var pl=d.toLocaleDateString('pl-PL');
+  ['dzis','dzis2','dzis3'].forEach(function(id){var e=document.getElementById(id);if(e)e.textContent=pl;});
+  document.getElementById('year').textContent=d.getFullYear();
+</script>
+</body>
+</html>

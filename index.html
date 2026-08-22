@@ -39,9 +39,12 @@
     --paper:#ffffff;
     --soft:#faf5ff;
     --grad:linear-gradient(90deg,#8b5cf6,#ec4899,#f97316);
-    --grad-br:linear-gradient(135deg,#8b5cf6,#ec4899,#f97316);
+    /* Gradienty pod biały tekst — pogłębione stopnie, aby spełnić kontrast WCAG AA */
+    --grad-br:linear-gradient(135deg,#7c3aed,#be185d);
+    --grad-text:linear-gradient(90deg,#7c3aed,#be185d,#c2410c);
     --shadow:0 20px 45px -22px rgba(124,58,237,.4);
     --radius:24px;
+    --focus:#7c3aed;
   }
   *{margin:0;padding:0;box-sizing:border-box}
   html{scroll-behavior:smooth}
@@ -54,7 +57,18 @@
   h1,h2,h3,h4{line-height:1.15;font-weight:800;letter-spacing:-.02em}
   ::selection{background:var(--violet);color:#fff}
   .wrap{max-width:1152px;margin:0 auto;padding:0 20px}
-  .grad-text{background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+  .grad-text{background:var(--grad-text);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+
+  /* ---------- DOSTĘPNOŚĆ ---------- */
+  a.skip{position:absolute;left:-9999px;top:0;z-index:200;background:#fff;color:var(--violet-600);
+    padding:12px 20px;border-radius:0 0 10px 0;font-weight:700;box-shadow:0 6px 16px -6px rgba(0,0,0,.4)}
+  a.skip:focus{left:0}
+  :focus-visible{outline:3px solid var(--focus);outline-offset:2px;border-radius:6px}
+  footer.ft :focus-visible{outline-color:#fff}
+  @media (prefers-reduced-motion:reduce){
+    *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;
+      transition-duration:.001ms!important;scroll-behavior:auto!important}
+  }
 
   /* ---------- BUTTONS ---------- */
   .btn{display:inline-flex;align-items:center;gap:.5em;padding:15px 30px;border-radius:999px;
@@ -117,8 +131,10 @@
   .hcard span{font-size:.85rem}
   .hcard.white{background:#fff;color:var(--ink)}
   .hcard.white span{color:var(--muted)}
-  .hcard.vp{background:linear-gradient(135deg,var(--violet),var(--pink));color:#fff}
-  .hcard.oy{background:linear-gradient(135deg,var(--orange),var(--amber));color:#fff}
+  .hcard.vp{background:linear-gradient(135deg,#7c3aed,#be185d);color:#fff}
+  .hcard.vp span{color:#fbe6f1}
+  .hcard.oy{background:#c2410c;color:#fff}
+  .hcard.oy span{color:#ffe8d6}
   .hcard .big{font-size:2.4rem;font-weight:800;line-height:1}
 
   /* ---------- SECTIONS ---------- */
@@ -239,6 +255,8 @@
 </head>
 <body>
 
+<a class="skip" href="#glowna-tresc">Przejdź do treści</a>
+
 <!-- ============ NAV ============ -->
 <header class="nav">
   <div class="wrap nav-inner">
@@ -246,7 +264,7 @@
       <span class="logo" aria-hidden="true">F</span>
       <span><b>Fundacja Przyszłość</b><small>dla Edukacji</small></span>
     </a>
-    <nav class="nav-links">
+    <nav class="nav-links" aria-label="Menu główne">
       <a href="#home">Start</a>
       <a href="#about">O szkole</a>
       <a href="#offer">Oferta</a>
@@ -255,11 +273,11 @@
       <a href="#contact" class="cta">Kontakt</a>
       <a href="https://portal.librus.pl/rodzina/synergia/loguj" target="_blank" rel="noopener" class="librus">📚 Librus ↗</a>
     </nav>
-    <button class="burger" id="burger" aria-label="Menu" aria-expanded="false">
-      <svg width="26" height="26" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+    <button class="burger" id="burger" aria-label="Otwórz menu" aria-expanded="false" aria-controls="mobile">
+      <svg width="26" height="26" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
     </button>
   </div>
-  <div class="mobile" id="mobile">
+  <nav class="mobile" id="mobile" aria-label="Menu mobilne">
     <a href="#home">Start</a>
     <a href="#about">O szkole</a>
     <a href="#offer">Oferta</a>
@@ -267,8 +285,10 @@
     <a href="bip.html">BIP</a>
     <a href="#contact">Kontakt</a>
     <a href="https://portal.librus.pl/rodzina/synergia/loguj" target="_blank" rel="noopener" style="color:var(--violet-600);font-weight:700">📚 Librus ↗</a>
-  </div>
+  </nav>
 </header>
+
+<main id="glowna-tresc">
 
 <!-- ============ HERO ============ -->
 <section class="hero" id="home">
@@ -470,6 +490,8 @@
   </div>
 </section>
 
+</main>
+
 <!-- ============ FOOTER ============ -->
 <footer class="ft">
   <div class="wrap">
@@ -488,6 +510,7 @@
         <a href="#offer">Oferta edukacyjna</a>
         <a href="#contact">Rekrutacja</a>
         <a href="bip.html">Biuletyn Informacji Publicznej</a>
+        <a href="deklaracja-dostepnosci.html">Deklaracja dostępności</a>
         <a href="https://portal.librus.pl/rodzina/synergia/loguj" target="_blank" rel="noopener">📚 Librus Synergia ↗</a>
       </div>
       <div class="ft-links">
@@ -511,12 +534,19 @@
   burger.addEventListener('click', function(){
     var open = mobile.classList.toggle('open');
     burger.setAttribute('aria-expanded', open);
+    burger.setAttribute('aria-label', open ? 'Zamknij menu' : 'Otwórz menu');
   });
   mobile.querySelectorAll('a').forEach(function(a){
     a.addEventListener('click', function(){
       mobile.classList.remove('open');
       burger.setAttribute('aria-expanded', 'false');
+      burger.setAttribute('aria-label', 'Otwórz menu');
     });
+  });
+
+  // Ukryj dekoracyjne emoji/ikony przed czytnikami ekranu (treść niosą sąsiednie napisy)
+  document.querySelectorAll('.emoji, .em, .ico, .avatar').forEach(function(el){
+    el.setAttribute('aria-hidden', 'true');
   });
 </script>
 </body>
