@@ -21,7 +21,6 @@
   *{margin:0;padding:0;box-sizing:border-box}
   html{scroll-behavior:smooth}
   body{font-family:'Inter',system-ui,-apple-system,sans-serif;color:var(--ink);background:var(--bg);line-height:1.65;-webkit-font-smoothing:antialiased}
-  body.editing{padding-bottom:86px}
   a{color:var(--bip);text-decoration:none}
   a:hover{text-decoration:underline}
   h1,h2,h3{line-height:1.2;font-weight:800;letter-spacing:-.01em}
@@ -33,12 +32,9 @@
   .top-inner{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:64px;padding:10px 0;flex-wrap:wrap}
   .top .logo{display:flex;align-items:center;gap:12px;font-weight:800;color:#fff}
   .top .logo img{height:34px;width:auto;display:block;background:#fff;border-radius:8px;padding:3px 5px}
-  .top .logo .badge{background:#fff;color:var(--bip);border-radius:8px;padding:4px 9px;font-size:.95rem;font-weight:800;letter-spacing:.5px}
   .top .logo small{display:block;font-weight:500;font-size:.72rem;color:#cfe0f5}
-  .top-actions{display:flex;gap:10px;align-items:center}
-  .top a.back,.top .edit-btn{color:#fff;font-size:.9rem;font-weight:700;border:1.5px solid rgba(255,255,255,.55);
-    padding:8px 16px;border-radius:999px;background:transparent;cursor:pointer;font-family:inherit}
-  .top a.back:hover,.top .edit-btn:hover{background:rgba(255,255,255,.15);text-decoration:none}
+  .top a.back{color:#fff;font-size:.9rem;font-weight:700;border:1.5px solid rgba(255,255,255,.55);padding:8px 16px;border-radius:999px}
+  .top a.back:hover{background:rgba(255,255,255,.15);text-decoration:none}
 
   .head{background:var(--paper);border-bottom:1px solid var(--line)}
   .head-inner{padding:30px 0 26px}
@@ -72,22 +68,9 @@
   .btn{display:inline-flex;align-items:center;gap:.4em;background:var(--bip);color:#fff;padding:11px 20px;border-radius:999px;font-weight:700;font-size:.95rem}
   .btn:hover{background:var(--bip-dark);text-decoration:none}
 
-  /* ---- POLA EDYTOWALNE ---- */
+  /* wartości z panelu; puste = wyróżnione jako do uzupełnienia */
   .fld{display:inline}
   .fld.empty{background:#fff8e6;border:1px dashed #e6b800;color:#8a6d00;border-radius:6px;padding:1px 8px;font-size:.9rem;font-weight:600}
-  body.editing .fld{outline:2px dashed var(--bip);outline-offset:2px;border-radius:4px;padding:2px 8px;min-width:60px;
-    display:inline-block;cursor:text;background:#fff;color:var(--ink);font-weight:400;font-size:.95rem;border:0}
-  body.editing .fld:empty::before{content:attr(data-ph);color:#9aa7b5}
-
-  /* ---- PASEK EDYCJI ---- */
-  #bar{display:none;position:fixed;left:0;right:0;bottom:0;z-index:100;background:#0e1726;color:#fff;
-    padding:12px 16px;gap:10px;align-items:center;justify-content:center;flex-wrap:wrap;box-shadow:0 -6px 20px rgba(0,0,0,.3)}
-  #bar .msg{font-size:.88rem;color:#c3cfe0;margin-right:auto}
-  #bar button{border:0;border-radius:999px;padding:10px 18px;font-weight:700;font-size:.9rem;cursor:pointer;font-family:inherit}
-  .b-dl{background:#fff;color:#0b5cad}
-  .b-clear{background:#f59e0b;color:#3a2600}
-  .b-exit{background:#374151;color:#fff}
-  @media(max-width:560px){#bar .msg{width:100%;margin:0 0 6px}}
 
   footer.ft{background:#0e1726;color:#c3cfe0;padding:30px 0;font-size:.9rem}
   footer.ft .ft-inner{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;align-items:center}
@@ -107,10 +90,7 @@
       <img src="favicon-180.png" alt="" aria-hidden="true">
       <span>Biuletyn Informacji Publicznej<small>Fundacja Przyszłość dla Edukacji</small></span>
     </a>
-    <div class="top-actions">
-      <button id="editBtn" class="edit-btn" type="button" onclick="enterEdit()">✎ Tryb edycji</button>
-      <a href="index.html" class="back">← Strona szkoły</a>
-    </div>
+    <a href="index.html" class="back">← Strona szkoły</a>
   </div>
 </div>
 
@@ -142,7 +122,7 @@
 
   <main>
     <div class="note">
-      Pola z danymi można zaktualizować bezpośrednio na stronie — kliknij <strong>„✎ Tryb edycji"</strong> (u góry) i podaj kod. Zmiany zapisują się w Twojej przeglądarce; aby opublikować je dla wszystkich, użyj przycisku <strong>„⬇ Pobierz bip-dane.json"</strong> i wgraj ten plik do repozytorium.
+      Dane w niniejszym Biuletynie są aktualizowane przez upoważnionych pracowników szkoły za pośrednictwem panelu redakcyjnego. Pola oznaczone kolorem wymagają jeszcze uzupełnienia.
     </div>
 
     <section class="card" id="dane">
@@ -208,7 +188,6 @@
         <li>Regulaminy (świetlicy, oceniania, WSO): <span class="fld" data-k="regulaminy" data-ph="do uzupełnienia"></span></li>
         <li>Procedury bezpieczeństwa: <span class="fld" data-k="procedury" data-ph="do uzupełnienia"></span></li>
       </ul>
-      <p class="note" style="margin-top:14px">Wskazówka: dokumenty PDF wgraj do repozytorium (ten sam folder), a w polu wpisz nazwę pliku, np. <code>statut.pdf</code>.</p>
     </section>
 
     <section class="card" id="majatek">
@@ -271,17 +250,10 @@
   </main>
 </div>
 
-<div id="bar" role="region" aria-label="Pasek edycji BIP">
-  <span class="msg">✎ Tryb edycji włączony — zmiany zapisują się w tej przeglądarce.</span>
-  <button type="button" class="b-dl" onclick="downloadData()">⬇ Pobierz bip-dane.json</button>
-  <button type="button" class="b-clear" onclick="clearLocal()">🗑 Wyczyść moje zmiany</button>
-  <button type="button" class="b-exit" onclick="exitEdit()">🔒 Zakończ edycję</button>
-</div>
-
 <footer class="ft">
   <div class="wrap ft-inner">
     <span>© <span id="year"></span> Niepubliczna Szkoła Podstawowa Fundacji Przyszłość dla Edukacji</span>
-    <span><a href="index.html">Strona szkoły</a> · <a href="deklaracja-dostepnosci.html">Deklaracja dostępności</a> · <a href="https://portal.librus.pl/rodzina/synergia/loguj" target="_blank" rel="noopener">Librus Synergia ↗</a></span>
+    <span><a href="index.html">Strona szkoły</a> · <a href="deklaracja-dostepnosci.html">Deklaracja dostępności</a> · <a href="https://app.pagescms.org" target="_blank" rel="noopener">Panel redakcji ↗</a></span>
   </div>
 </footer>
 
@@ -293,77 +265,21 @@
     dotacja:'',sprawozdania:'',iod:'',klauzula:'',
     red_tresc:'',red_wprow:'',data_akt:''
   };
-  var LS_KEY='bipLocal', CODE='3032';
   var store=Object.assign({},FIELDS_DEFAULT);
-  var editMode=false;
-
   function today(){return new Date().toLocaleDateString('pl-PL');}
-  function loadLocal(){try{return JSON.parse(localStorage.getItem(LS_KEY))||{};}catch(e){return {};}}
-  function saveLocal(){try{localStorage.setItem(LS_KEY,JSON.stringify(store));}catch(e){}}
-
-  function renderAll(){
+  function render(){
     document.querySelectorAll('.fld').forEach(function(el){
       var k=el.dataset.k, v=(store[k]||'').trim();
-      if(editMode){ el.textContent=v; return; }
       if(!v && k==='data_akt'){ el.textContent=today(); el.classList.remove('empty'); return; }
       if(v){ el.textContent=v; el.classList.remove('empty'); }
       else { el.textContent=el.dataset.ph||'— do uzupełnienia —'; el.classList.add('empty'); }
     });
   }
-
-  function mergeInto(src){ if(!src) return; Object.keys(src).forEach(function(k){ if(k in store) store[k]=src[k]; }); }
-
-  function initLoad(){
-    fetch('bip-dane.json',{cache:'no-store'})
-      .then(function(r){return r.ok?r.json():null;})
-      .then(function(pub){ mergeInto(pub); mergeInto(loadLocal()); renderAll(); })
-      .catch(function(){ mergeInto(loadLocal()); renderAll(); });
-  }
-
-  function onInput(e){ store[e.target.dataset.k]=e.target.textContent.trim(); saveLocal(); }
-
-  function enterEdit(){
-    var code=prompt('Podaj kod dostępu do edycji BIP:');
-    if(code===null) return;
-    if(code!==CODE){ alert('Nieprawidłowy kod.'); return; }
-    editMode=true;
-    document.body.classList.add('editing');
-    document.querySelectorAll('.fld').forEach(function(el){ el.setAttribute('contenteditable','true'); });
-    renderAll();
-    document.getElementById('bar').style.display='flex';
-    document.getElementById('editBtn').style.display='none';
-  }
-
-  function exitEdit(){
-    editMode=false;
-    document.body.classList.remove('editing');
-    document.querySelectorAll('.fld').forEach(function(el){ el.removeAttribute('contenteditable'); });
-    renderAll();
-    document.getElementById('bar').style.display='none';
-    document.getElementById('editBtn').style.display='';
-  }
-
-  function downloadData(){
-    if(!store.data_akt) store.data_akt=today();
-    saveLocal(); renderAll();
-    var blob=new Blob([JSON.stringify(store,null,2)],{type:'application/json'});
-    var a=document.createElement('a');
-    a.href=URL.createObjectURL(blob); a.download='bip-dane.json';
-    document.body.appendChild(a); a.click(); a.remove();
-    alert('Pobrano plik bip-dane.json.\n\nAby zmiany zobaczyli wszyscy: wgraj ten plik do repozytorium (ten sam folder co bip.html) i zatwierdź (commit).');
-  }
-
-  function clearLocal(){
-    if(!confirm('Usunąć Twoje lokalne zmiany i wrócić do opublikowanej wersji?')) return;
-    try{localStorage.removeItem(LS_KEY);}catch(e){}
-    store=Object.assign({},FIELDS_DEFAULT);
-    exitEdit();
-    initLoad();
-  }
-
   document.getElementById('year').textContent=new Date().getFullYear();
-  document.querySelectorAll('.fld').forEach(function(el){ el.addEventListener('input',onInput); });
-  initLoad();
+  fetch('bip-dane.json',{cache:'no-store'})
+    .then(function(r){return r.ok?r.json():null;})
+    .then(function(d){ if(d){ Object.keys(d).forEach(function(k){ if(k in store) store[k]=d[k]; }); } render(); })
+    .catch(function(){ render(); });
 </script>
 </body>
 </html>

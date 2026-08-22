@@ -1,0 +1,69 @@
+media:
+  input: media
+  output: /media
+
+content:
+  - name: bip
+    label: "BIP — dane szkoły"
+    path: bip-dane.json
+    type: file
+    fields:
+      - name: nip
+        label: NIP
+        type: string
+      - name: regon
+        label: REGON
+        type: string
+      - name: rspo
+        label: Numer RSPO
+        type: string
+      - name: wpis
+        label: Numer wpisu do ewidencji szkół niepublicznych
+        type: string
+      - name: data_start
+        label: Data rozpoczęcia działalności
+        type: string
+        description: "Format: RRRR-MM-DD"
+      - name: organ_adres
+        label: Organ prowadzący — adres
+        type: string
+      - name: organ_krs
+        label: Organ prowadzący — numer KRS
+        type: string
+      - name: organ_zarzad
+        label: Organ prowadzący — zarząd fundacji
+        type: text
+      - name: dyrektor
+        label: Dyrektor szkoły (imię i nazwisko)
+        type: string
+      - name: statut
+        label: Statut szkoły (nazwa pliku lub adres, np. statut.pdf)
+        type: string
+      - name: regulaminy
+        label: Regulaminy
+        type: text
+      - name: procedury
+        label: Procedury bezpieczeństwa
+        type: text
+      - name: dotacja
+        label: Informacja o dotacji na bieżący rok
+        type: text
+      - name: sprawozdania
+        label: Sprawozdania finansowe organu prowadzącego
+        type: text
+      - name: iod
+        label: Inspektor Ochrony Danych (imię, nazwisko, e-mail)
+        type: string
+      - name: klauzula
+        label: Klauzula informacyjna RODO (nazwa pliku lub adres)
+        type: string
+      - name: red_tresc
+        label: Redakcja — osoba odpowiedzialna za treść
+        type: string
+      - name: red_wprow
+        label: Redakcja — osoba wprowadzająca informacje
+        type: string
+      - name: data_akt
+        label: Data ostatniej aktualizacji
+        type: string
+        description: "Format: RRRR-MM-DD"
