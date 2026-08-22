@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Niepubliczna Szkoła Podstawowa Fundacji Przyszłość dla Edukacji</title>
+<meta name="description" content="Jesteśmy szkołą, ale inną. Metoda Montessori, max 12 uczniów w klasie, bez dzwonków i ocen. Łódź, ul. Piękna 30/32. Rekrutacja 2026/2027 trwa.">
+<meta name="theme-color" content="#8b5cf6">
+<link rel="canonical" href="https://jacksuliga-rgb.github.io/przyszloscdlaedukacji/">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:locale" content="pl_PL">
+<meta property="og:title" content="Niepubliczna Szkoła Podstawowa Fundacji Przyszłość dla Edukacji">
+<meta property="og:description" content="Jesteśmy szkołą, ale inną. Metoda Montessori, max 12 uczniów, bez dzwonków i ocen. Łódź, ul. Piękna 30/32.">
+<meta property="og:url" content="https://jacksuliga-rgb.github.io/przyszloscdlaedukacji/">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Niepubliczna Szkoła Podstawowa Fundacji Przyszłość dla Edukacji">
+<meta name="twitter:description" content="Jesteśmy szkołą, ale inną. Metoda Montessori, max 12 uczniów, bez dzwonków i ocen.">
+
+<!-- Favicon: F w kolorowym kółku -->
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%238b5cf6'/%3E%3Cstop offset='.5' stop-color='%23ec4899'/%3E%3Cstop offset='1' stop-color='%23f97316'/%3E%3C/linearGradient%3E%3C/defs%3E%3Ccircle cx='16' cy='16' r='16' fill='url(%23g)'/%3E%3Ctext x='16' y='22' font-family='Arial,sans-serif' font-size='18' font-weight='700' fill='white' text-anchor='middle'%3EF%3C/text%3E%3C/svg%3E">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --violet:#8b5cf6;
+    --violet-600:#7c3aed;
+    --pink:#ec4899;
+    --orange:#f97316;
+    --amber:#fbbf24;
+    --ink:#1f2937;
+    --gray:#4b5563;
+    --muted:#6b7280;
+    --line:#e5e7eb;
+    --paper:#ffffff;
+    --soft:#faf5ff;
+    --grad:linear-gradient(90deg,#8b5cf6,#ec4899,#f97316);
+    --grad-br:linear-gradient(135deg,#8b5cf6,#ec4899,#f97316);
+    --shadow:0 20px 45px -22px rgba(124,58,237,.4);
+    --radius:24px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Inter',system-ui,-apple-system,sans-serif;
+    color:var(--ink);background:var(--paper);line-height:1.6;
+    -webkit-font-smoothing:antialiased;overflow-x:hidden;
+  }
+  a{color:inherit;text-decoration:none}
+  h1,h2,h3,h4{line-height:1.15;font-weight:800;letter-spacing:-.02em}
+  ::selection{background:var(--violet);color:#fff}
+  .wrap{max-width:1152px;margin:0 auto;padding:0 20px}
+  .grad-text{background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+
+  /* ---------- BUTTONS ---------- */
+  .btn{display:inline-flex;align-items:center;gap:.5em;padding:15px 30px;border-radius:999px;
+    font-weight:700;font-size:1rem;cursor:pointer;border:0;transition:transform .18s ease,box-shadow .22s ease;white-space:nowrap}
+  .btn-grad{background:var(--grad-br);color:#fff;box-shadow:0 12px 30px -10px rgba(236,72,153,.6)}
+  .btn-grad:hover{transform:translateY(-3px) scale(1.02);box-shadow:0 18px 40px -12px rgba(236,72,153,.7)}
+  .btn-white{background:#fff;color:var(--gray);box-shadow:0 8px 20px -10px rgba(0,0,0,.25)}
+  .btn-white:hover{transform:translateY(-3px);box-shadow:0 14px 28px -12px rgba(0,0,0,.3)}
+  .btn-on-grad{background:#fff;color:var(--violet-600)}
+  .btn-on-grad:hover{transform:translateY(-2px);box-shadow:0 12px 28px -10px rgba(0,0,0,.35)}
+
+  /* ---------- NAV ---------- */
+  header.nav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.9);backdrop-filter:blur(10px);
+    box-shadow:0 1px 0 rgba(0,0,0,.05)}
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;height:70px}
+  .brand{display:flex;align-items:center;gap:12px}
+  .brand .logo{width:46px;height:46px;border-radius:50%;background:var(--grad-br);display:grid;place-items:center;
+    color:#fff;font-weight:800;font-size:1.25rem;box-shadow:0 8px 18px -8px rgba(139,92,246,.7);flex:0 0 auto}
+  .brand b{display:block;font-size:.92rem;color:var(--ink);line-height:1.2}
+  .brand small{display:block;font-size:.74rem;color:var(--muted)}
+  .nav-links{display:flex;align-items:center;gap:4px}
+  .nav-links a{padding:9px 16px;border-radius:999px;font-size:.92rem;font-weight:600;color:var(--gray);transition:.15s}
+  .nav-links a:hover{background:#f3f4f6}
+  .nav-links a.cta{background:var(--grad-br);color:#fff;box-shadow:0 8px 18px -10px rgba(236,72,153,.7)}
+  .nav-links a.cta:hover{background:var(--grad-br);transform:translateY(-1px)}
+  .nav-links a.librus{background:#fff;border:2px solid var(--violet);color:var(--violet-600);padding:7px 15px}
+  .nav-links a.librus:hover{background:var(--violet);color:#fff}
+  .nav-links a.bip{font-weight:700;color:var(--violet-600)}
+  .burger{display:none;background:none;border:0;padding:8px;cursor:pointer;color:var(--ink)}
+  .mobile{display:none;flex-direction:column;padding:8px 20px 16px;background:#fff;border-top:1px solid var(--line)}
+  .mobile a{padding:13px 12px;border-radius:12px;color:var(--gray);font-weight:600}
+  .mobile a:hover{background:var(--soft)}
+  .mobile.open{display:flex}
+
+  /* ---------- HERO ---------- */
+  .hero{position:relative;overflow:hidden;padding:88px 0 80px}
+  .hero-bg{position:absolute;inset:0;background:linear-gradient(135deg,#f5f3ff,#fdf2f8 45%,#fff7ed)}
+  .blob{position:absolute;border-radius:50%;filter:blur(70px);opacity:.32;pointer-events:none}
+  .blob.b1{top:-40px;right:-30px;width:340px;height:340px;background:linear-gradient(135deg,#c4b5fd,#f9a8d4);animation:pulse 6s ease-in-out infinite}
+  .blob.b2{bottom:-60px;left:-40px;width:420px;height:420px;background:linear-gradient(135deg,#fdba74,#fde68a);opacity:.24}
+  @keyframes pulse{0%,100%{transform:scale(1);opacity:.32}50%{transform:scale(1.08);opacity:.22}}
+  .hero-grid{position:relative;z-index:2;display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center}
+  .pill{display:inline-block;padding:9px 18px;background:rgba(255,255,255,.85);backdrop-filter:blur(4px);
+    border-radius:999px;font-size:.9rem;font-weight:600;color:var(--violet-600);box-shadow:0 6px 16px -8px rgba(0,0,0,.15);margin-bottom:22px}
+  .hero h1{font-size:clamp(2.2rem,4.6vw,3.4rem);color:var(--ink);margin-bottom:8px}
+  .hero .sub{font-size:1.2rem;color:var(--gray);margin-bottom:10px}
+  .hero .slogan{font-size:clamp(1.5rem,3vw,2rem);font-weight:800;margin-bottom:26px}
+  .hero-tags{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:32px}
+  .tag{padding:8px 15px;background:#fff;border-radius:999px;font-size:.88rem;font-weight:600;color:var(--gray);
+    box-shadow:0 4px 12px -6px rgba(0,0,0,.15)}
+  .hero-actions{display:flex;flex-wrap:wrap;gap:14px}
+
+  /* hero cards grid */
+  .hcards{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .hcards .col2{padding-top:36px}
+  .hcard{border-radius:26px;padding:24px;box-shadow:0 18px 40px -24px rgba(0,0,0,.3);transition:transform .2s ease}
+  .hcard:hover{transform:translateY(-5px)}
+  .hcard .emoji{font-size:2.2rem;margin-bottom:10px}
+  .hcard b{display:block;font-size:1.15rem;font-weight:800}
+  .hcard span{font-size:.85rem}
+  .hcard.white{background:#fff;color:var(--ink)}
+  .hcard.white span{color:var(--muted)}
+  .hcard.vp{background:linear-gradient(135deg,var(--violet),var(--pink));color:#fff}
+  .hcard.oy{background:linear-gradient(135deg,var(--orange),var(--amber));color:#fff}
+  .hcard .big{font-size:2.4rem;font-weight:800;line-height:1}
+
+  /* ---------- SECTIONS ---------- */
+  .sec{padding:84px 0}
+  .sec.soft{background:linear-gradient(to bottom,#fff,var(--soft))}
+  .sec.warm{background:linear-gradient(to bottom,#fff,#fff7ed)}
+  .sec.rose{background:linear-gradient(to bottom,#fff,#fdf2f8)}
+  .sec-head{text-align:center;max-width:640px;margin:0 auto 56px}
+  .sec-head h2{font-size:clamp(1.9rem,3.8vw,2.8rem);margin-bottom:12px}
+  .sec-head p{font-size:1.15rem;color:var(--gray)}
+
+  /* about */
+  .split{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;margin-bottom:60px}
+  .about-art{position:relative;background:linear-gradient(135deg,#ede9fe,#fce7f3);border-radius:28px;padding:8px;overflow:hidden}
+  .about-art .glo{position:absolute;border-radius:50%;opacity:.5}
+  .about-art .g1{top:-30px;right:-30px;width:150px;height:150px;background:linear-gradient(135deg,#c4b5fd,#f9a8d4)}
+  .about-art .g2{bottom:-30px;left:-30px;width:120px;height:120px;background:linear-gradient(135deg,#fdba74,#fde68a)}
+  .about-art .em{position:relative;text-align:center;font-size:7rem;padding:44px 0}
+  .split h3{font-size:1.6rem;margin-bottom:14px}
+  .split p{color:var(--gray);margin-bottom:16px}
+  .mini-tags{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}
+  .mini-tags span{padding:9px 16px;background:#fff;border-radius:999px;font-size:.85rem;font-weight:600;color:var(--violet-600);box-shadow:0 4px 12px -6px rgba(0,0,0,.15)}
+
+  .grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+  .grid5{display:grid;grid-template-columns:repeat(5,1fr);gap:18px}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+  .fcard{background:#fff;border-radius:var(--radius);padding:26px;text-align:center;box-shadow:0 12px 30px -20px rgba(0,0,0,.25);transition:transform .18s ease,box-shadow .2s ease}
+  .fcard:hover{transform:translateY(-6px);box-shadow:var(--shadow)}
+  .fcard .emoji{font-size:2.6rem;margin-bottom:14px;transition:transform .2s ease;display:inline-block}
+  .fcard:hover .emoji{transform:scale(1.15)}
+  .fcard h4{font-size:1.08rem;margin-bottom:6px}
+  .fcard p{font-size:.9rem;color:var(--muted)}
+
+  /* offer languages banner */
+  .lang{background:var(--grad-br);border-radius:28px;padding:40px;color:#fff;margin-bottom:48px}
+  .lang h3{text-align:center;font-size:1.6rem;margin-bottom:26px}
+  .lang-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+  .lang-box{background:rgba(255,255,255,.18);backdrop-filter:blur(4px);border-radius:18px;padding:22px}
+  .lang-box b{display:block;font-size:1.1rem;margin-bottom:12px}
+  .lang-box .lp{display:inline-flex;gap:8px;flex-wrap:wrap}
+  .lang-box .lp span{padding:6px 14px;background:rgba(255,255,255,.28);border-radius:999px;font-size:.85rem;font-weight:600}
+
+  .info2{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+  .info-card{background:#fff;border-radius:var(--radius);padding:32px;box-shadow:0 12px 30px -20px rgba(0,0,0,.25)}
+  .info-card .emoji{font-size:2.4rem;margin-bottom:14px}
+  .info-card h4{font-size:1.3rem;margin-bottom:10px}
+  .info-card p{color:var(--gray);margin-bottom:16px}
+  .dotline{display:flex;align-items:center;gap:10px;font-size:.92rem;color:var(--gray);margin-bottom:8px}
+  .dotline .d{width:9px;height:9px;border-radius:50%;flex:0 0 auto}
+  .d.green{background:#22c55e}.d.orange{background:var(--orange)}
+
+  /* team */
+  .team-card{background:#fff;border-radius:var(--radius);padding:26px;text-align:center;box-shadow:0 12px 30px -20px rgba(0,0,0,.25);transition:transform .18s ease,box-shadow .2s}
+  .team-card:hover{transform:translateY(-6px);box-shadow:var(--shadow)}
+  .avatar{width:92px;height:92px;margin:0 auto 16px;border-radius:50%;display:grid;place-items:center;color:#fff;font-weight:800;font-size:1.7rem;transition:transform .2s ease}
+  .team-card:hover .avatar{transform:scale(1.08)}
+  .av1{background:linear-gradient(135deg,#a78bfa,#f472b6)}
+  .av2{background:linear-gradient(135deg,#60a5fa,#22d3ee)}
+  .av3{background:linear-gradient(135deg,#4ade80,#2dd4bf)}
+  .av4{background:linear-gradient(135deg,#fb923c,#fbbf24)}
+  .team-card h4{font-size:1.1rem}
+  .team-card .role{color:var(--violet-600);font-weight:600;font-size:.95rem}
+  .team-card .subj{color:var(--muted);font-size:.85rem}
+  .join{margin-top:56px;background:#fff;border-radius:28px;padding:44px;box-shadow:0 16px 40px -26px rgba(0,0,0,.3)}
+  .join-grid{display:grid;grid-template-columns:1.3fr .7fr;gap:32px;align-items:center}
+  .join h3{font-size:1.6rem;margin-bottom:12px}
+  .join p{color:var(--gray);margin-bottom:20px}
+  .join .em{text-align:center;font-size:6rem}
+
+  /* contact */
+  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+  .contact-card{background:#fff;border-radius:28px;padding:36px;box-shadow:0 16px 40px -26px rgba(0,0,0,.3)}
+  .contact-card h3{font-size:1.5rem;margin-bottom:26px}
+  .crow{display:flex;gap:16px;align-items:flex-start;margin-bottom:22px}
+  .crow .ic{width:48px;height:48px;border-radius:14px;display:grid;place-items:center;font-size:1.4rem;flex:0 0 auto}
+  .ic.v{background:#ede9fe}.ic.p{background:#fce7f3}.ic.o{background:#ffedd5}.ic.b{background:#dbeafe}
+  .crow b{display:block;color:var(--ink)}
+  .crow span,.crow a{color:var(--gray)}
+  .crow a:hover{color:var(--violet-600)}
+  .hours{margin-top:26px;padding-top:22px;border-top:1px solid var(--line)}
+  .hours b{display:block;margin-bottom:6px}
+  .hours span{color:var(--gray)}
+  .rekru{background:var(--grad-br);color:#fff;border-radius:28px;padding:36px}
+  .rekru h3{font-size:1.5rem;margin-bottom:24px}
+  .rbox{background:rgba(255,255,255,.18);backdrop-filter:blur(4px);border-radius:16px;padding:18px;margin-bottom:14px}
+  .rbox b{display:block;margin-bottom:4px}
+  .rbox span{color:rgba(255,255,255,.92)}
+  .rekru .btn{width:100%;justify-content:center;margin-top:10px}
+
+  /* footer */
+  footer.ft{background:#111827;color:#fff;padding:56px 0 30px}
+  .ft-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:36px;margin-bottom:34px}
+  .ft-grid h4{font-size:1.02rem;margin-bottom:16px}
+  .ft-brand{display:flex;align-items:center;gap:12px;margin-bottom:14px}
+  .ft-brand .logo{width:40px;height:40px;border-radius:50%;background:var(--grad-br);display:grid;place-items:center;font-weight:800}
+  .ft-grid p{color:#9ca3af;font-size:.9rem;margin-bottom:6px}
+  .ft-grid a{display:block;color:#9ca3af;padding:5px 0;font-size:.92rem}
+  .ft-grid a:hover{color:#fff}
+  .ft-links a{color:#9ca3af}
+  .ft-bottom{border-top:1px solid #1f2937;padding-top:26px;text-align:center;color:#6b7280;font-size:.88rem}
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width:960px){
+    .hero-grid,.split,.grid2,.info2,.lang-grid,.contact-grid,.join-grid,.ft-grid{grid-template-columns:1fr}
+    .grid4{grid-template-columns:1fr 1fr}
+    .grid5{grid-template-columns:1fr 1fr 1fr}
+    .nav-links{display:none}
+    .burger{display:block}
+    .hcards{max-width:460px;margin:0 auto}
+    .join .em{display:none}
+  }
+  @media (max-width:560px){
+    .grid4,.grid5,.hcards{grid-template-columns:1fr 1fr}
+    .sec{padding:60px 0}
+    .lang,.contact-card,.rekru,.join{padding:26px}
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ NAV ============ -->
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a href="#home" class="brand" aria-label="Strona główna">
+      <span class="logo" aria-hidden="true">F</span>
+      <span><b>Fundacja Przyszłość</b><small>dla Edukacji</small></span>
+    </a>
+    <nav class="nav-links">
+      <a href="#home">Start</a>
+      <a href="#about">O szkole</a>
+      <a href="#offer">Oferta</a>
+      <a href="#team">Kadra</a>
+      <a href="bip.html" class="bip">BIP</a>
+      <a href="#contact" class="cta">Kontakt</a>
+      <a href="https://portal.librus.pl/rodzina/synergia/loguj" target="_blank" rel="noopener" class="librus">📚 Librus ↗</a>
+    </nav>
+    <button class="burger" id="burger" aria-label="Menu" aria-expanded="false">
+      <svg width="26" height="26" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+    </button>
+  </div>
+  <div class="mobile" id="mobile">
+    <a href="#home">Start</a>
+    <a href="#about">O szkole</a>
+    <a href="#offer">Oferta</a>
+    <a href="#team">Kadra</a>
+    <a href="bip.html">BIP</a>
+    <a href="#contact">Kontakt</a>
+    <a href="https://portal.librus.pl/rodzina/synergia/loguj" target="_blank" rel="noopener" style="color:var(--violet-600);font-weight:700">📚 Librus ↗</a>
+  </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="home">
+  <div class="hero-bg"></div>
+  <span class="blob b1"></span>
+  <span class="blob b2"></span>
+  <div class="wrap hero-grid">
+    <div>
+      <span class="pill">🎓 Rekrutacja 2026/2027 trwa!</span>
+      <h1>Niepubliczna Szkoła Podstawowa</h1>
+      <p class="sub">Fundacji Przyszłość dla Edukacji</p>
+      <p class="slogan grad-text">„Jesteśmy szkołą, ale inną."</p>
+      <div class="hero-tags">
+        <span class="tag">🔕 Bez dzwonków</span>
+        <span class="tag">📊 Bez ocen</span>
+        <span class="tag">👥 Max 12 uczniów</span>
+        <span class="tag">🌱 Metoda Montessori</span>
+      </div>
+      <div class="hero-actions">
+        <a href="#contact" class="btn btn-grad">Zapisz dziecko</a>
+        <a href="#about" class="btn btn-white">Poznaj nas</a>
+      </div>
+    </div>
+    <div class="hcards">
+      <div class="col1">
+        <div class="hcard white" style="margin-bottom:16px">
+          <div class="emoji">🔕</div><b>Bez dzwonków</b><span>naturalny rytm dnia</span>
+        </div>
+        <div class="hcard vp">
+          <div class="emoji">📊</div><b>Bez ocen</b><span>ocena opisowa</span>
+        </div>
+      </div>
+      <div class="col2">
+        <div class="hcard oy" style="margin-bottom:16px">
+          <div class="emoji">👥</div><span class="big">12</span><span>max uczniów w klasie</span>
+        </div>
+        <div class="hcard white">
+          <div class="emoji">🌍</div><b>3 języki</b><span>angielski, hiszpański, francuski</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ O SZKOLE ============ -->
+<section class="sec soft" id="about">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>O naszej szkole</h2>
+      <p>Tworzymy miejsce, gdzie każde dziecko może rozwinąć swój potencjał</p>
+    </div>
+
+    <div class="split">
+      <div class="about-art">
+        <span class="glo g1"></span><span class="glo g2"></span>
+        <div class="em">🏫</div>
+      </div>
+      <div>
+        <h3>Nasza misja</h3>
+        <p>Fundacja Przyszłość dla Edukacji powstała z przekonania, że każde dziecko zasługuje na edukację dostosowaną do jego indywidualnych potrzeb. Wierzymy, że szkoła może być miejscem radości, odkrywania i rozwoju.</p>
+        <p><strong>„Jesteśmy szkołą, ale inną"</strong> — u nas nie ma dzwonków ani tradycyjnych ocen. Stawiamy na naturalny rytm dnia i ocenę opisową, która naprawdę wspiera rozwój dziecka. Maksymalnie 12 uczniów w klasie to gwarancja indywidualnego podejścia. <strong>W klasach 1–3 pracujemy metodą Montessori</strong>, która rozwija samodzielność i naturalną ciekawość dziecka.</p>
+        <div class="mini-tags">
+          <span>Metoda Montessori</span><span>Bez dzwonków</span><span>Bez ocen</span><span>Max 12 uczniów</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid4">
+      <div class="fcard"><div class="emoji">🎧</div><h4>2 kabiny wyciszające</h4><p>Przestrzeń do skupienia i wyciszenia</p></div>
+      <div class="fcard"><div class="emoji">🌳</div><h4>Własny ogród</h4><p>Duży ogród na wyłączność szkoły</p></div>
+      <div class="fcard"><div class="emoji">🧩</div><h4>Sala SI</h4><p>Sala integracji sensorycznej</p></div>
+      <div class="fcard"><div class="emoji">🎯</div><h4>Strzelnica laserowa</h4><p>Sprzęt olimpijski Anschütz, Pentashot</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ OFERTA ============ -->
+<section class="sec warm" id="offer">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>Nasza oferta</h2>
+      <p>Wszechstronny rozwój w przyjaznym środowisku</p>
+    </div>
+
+    <div class="lang">
+      <h3>🌍 Program językowy</h3>
+      <div class="lang-grid">
+        <div class="lang-box">
+          <b>Klasy 1–3</b>
+          <span class="lp"><span>🇬🇧 Angielski</span><span>🇪🇸 Hiszpański</span></span>
+        </div>
+        <div class="lang-box">
+          <b>Klasy 4–8</b>
+          <span class="lp"><span>🇬🇧 Angielski</span><span>🇪🇸 Hiszpański lub 🇫🇷 Francuski</span></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid5" style="margin-bottom:48px">
+      <div class="fcard"><div class="emoji">⚽</div><h4>Piłka nożna</h4><p>Sprawność i duch drużyny</p></div>
+      <div class="fcard"><div class="emoji">🎯</div><h4>Strzelectwo sportowe</h4><p>Strzelnica laserowa, sprzęt olimpijski</p></div>
+      <div class="fcard"><div class="emoji">🎭</div><h4>Zajęcia teatralne</h4><p>Kreatywność i pewność siebie</p></div>
+      <div class="fcard"><div class="emoji">♟️</div><h4>Szachy</h4><p>Logiczne myślenie i strategia</p></div>
+      <div class="fcard"><div class="emoji">🏊</div><h4>Basen</h4><p>Nauka i doskonalenie pływania</p></div>
+      <div class="fcard"><div class="emoji">💪</div><h4>Siłownia na WF</h4><p>Nowoczesne wychowanie fizyczne</p></div>
+      <div class="fcard"><div class="emoji">💻</div><h4>Algorytmika</h4><p>Podstawy programowania</p></div>
+      <div class="fcard"><div class="emoji">✏️</div><h4>Rysunek</h4><p>Zajęcia plastyczne i artystyczne</p></div>
+      <div class="fcard"><div class="emoji">👨‍🍳</div><h4>Zajęcia kulinarne</h4><p>Gotowanie dla starszych klas</p></div>
+      <div class="fcard"><div class="emoji">🌍</div><h4>Języki obce</h4><p>Angielski + hiszpański lub francuski</p></div>
+    </div>
+
+    <div class="info2">
+      <div class="info-card">
+        <div class="emoji">🚌</div>
+        <h4>Szkolny BUS</h4>
+        <p>Dla chętnych organizujemy dowóz szkolnym busem.</p>
+        <div class="dotline"><span class="d green"></span><span><strong>Start:</strong> Castorama Radogoszcz, godz. 7:30</span></div>
+        <div class="dotline"><span class="d orange"></span><span><strong>Powrót:</strong> Castorama Radogoszcz, godz. 15:45</span></div>
+      </div>
+      <div class="info-card">
+        <div class="emoji">🍽️</div>
+        <h4>Obiady</h4>
+        <p>Smaczne i zdrowe obiady zamawiane wygodnie przez system elektroniczny.</p>
+        <div class="dotline"><span style="font-size:1.1rem">💻</span><span style="color:var(--violet-600);font-weight:600">Zamawianie online przez aplikację</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ KADRA ============ -->
+<section class="sec rose" id="team">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>Nasza kadra</h2>
+      <p>Doświadczeni pedagodzy z pasją do nauczania</p>
+    </div>
+
+    <div class="grid4">
+      <div class="team-card"><div class="avatar av1">AK</div><h4>Anna Kowalska</h4><div class="role">Dyrektor</div><div class="subj">Pedagog</div></div>
+      <div class="team-card"><div class="avatar av2">MN</div><h4>Marek Nowak</h4><div class="role">Nauczyciel</div><div class="subj">Matematyka</div></div>
+      <div class="team-card"><div class="avatar av3">EW</div><h4>Ewa Wiśniewska</h4><div class="role">Nauczyciel</div><div class="subj">J. Polski</div></div>
+      <div class="team-card"><div class="avatar av4">TZ</div><h4>Tomasz Zieliński</h4><div class="role">Nauczyciel</div><div class="subj">J. Angielski</div></div>
+    </div>
+
+    <div class="join">
+      <div class="join-grid">
+        <div>
+          <h3>Dołącz do naszego zespołu!</h3>
+          <p>Szukamy nauczycieli z pasją, którzy chcą tworzyć z nami szkołę przyszłości. Oferujemy przyjazną atmosferę pracy i możliwości rozwoju.</p>
+          <a href="#contact" class="btn btn-grad">Zobacz oferty pracy</a>
+        </div>
+        <div class="em">👩‍🏫</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ KONTAKT ============ -->
+<section class="sec soft" id="contact">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>Kontakt i rekrutacja</h2>
+      <p>Zapraszamy do kontaktu — chętnie odpowiemy na wszystkie pytania</p>
+    </div>
+
+    <div class="contact-grid">
+      <div class="contact-card">
+        <h3>Dane kontaktowe</h3>
+        <div class="crow">
+          <div class="ic v">📍</div>
+          <div><b>Adres</b><span>ul. Piękna 30/32<br>Łódź</span></div>
+        </div>
+        <div class="crow">
+          <div class="ic p">📞</div>
+          <div><b>Telefon</b><a href="tel:+48666666666">+48 666 666 666</a></div>
+        </div>
+        <div class="crow">
+          <div class="ic o">✉️</div>
+          <div><b>E-mail</b><a href="mailto:przyszloscdlaedukacji@gmail.com">przyszloscdlaedukacji@gmail.com</a></div>
+        </div>
+        <div class="crow">
+          <div class="ic b">📘</div>
+          <div><b>Facebook</b><a href="https://www.facebook.com/papierowywiatraczek" target="_blank" rel="noopener noreferrer">facebook.com/papierowywiatraczek</a></div>
+        </div>
+        <div class="hours">
+          <b>Godziny pracy sekretariatu</b>
+          <span>Poniedziałek – Piątek: 8:00 – 16:00</span>
+        </div>
+      </div>
+
+      <div class="rekru">
+        <h3>Rekrutacja 2026/2027</h3>
+        <div class="rbox"><b>📅 Dni otwarte</b><span>Każda sobota marca, godz. 10:00</span></div>
+        <div class="rbox"><b>📝 Termin składania dokumentów</b><span>Do 30 kwietnia 2026</span></div>
+        <div class="rbox"><b>🎯 Rozmowy kwalifikacyjne</b><span>Maj 2026</span></div>
+        <a href="mailto:przyszloscdlaedukacji@gmail.com?subject=Rekrutacja%202026%2F2027%20-%20formularz%20zg%C5%82oszeniowy" class="btn btn-on-grad">Pobierz formularz zgłoszeniowy</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="ft">
+  <div class="wrap">
+    <div class="ft-grid">
+      <div>
+        <div class="ft-brand">
+          <span class="logo" aria-hidden="true">F</span>
+          <b>Fundacja Przyszłość dla Edukacji</b>
+        </div>
+        <p>„Jesteśmy szkołą, ale inną."</p>
+        <p>ul. Piękna 30/32, Łódź</p>
+      </div>
+      <div class="ft-links">
+        <h4>Szybkie linki</h4>
+        <a href="#about">O szkole</a>
+        <a href="#offer">Oferta edukacyjna</a>
+        <a href="#contact">Rekrutacja</a>
+        <a href="bip.html">Biuletyn Informacji Publicznej</a>
+        <a href="https://portal.librus.pl/rodzina/synergia/loguj" target="_blank" rel="noopener">📚 Librus Synergia ↗</a>
+      </div>
+      <div class="ft-links">
+        <h4>Kontakt</h4>
+        <a href="tel:+48666666666">📞 +48 666 666 666</a>
+        <a href="mailto:przyszloscdlaedukacji@gmail.com">✉️ przyszloscdlaedukacji@gmail.com</a>
+        <a href="https://www.facebook.com/papierowywiatraczek" target="_blank" rel="noopener noreferrer">📘 Facebook</a>
+      </div>
+    </div>
+    <div class="ft-bottom">
+      © <span id="year"></span> Niepubliczna Szkoła Podstawowa Fundacji Przyszłość dla Edukacji. Wszelkie prawa zastrzeżone.
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  var burger = document.getElementById('burger');
+  var mobile = document.getElementById('mobile');
+  burger.addEventListener('click', function(){
+    var open = mobile.classList.toggle('open');
+    burger.setAttribute('aria-expanded', open);
+  });
+  mobile.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click', function(){
+      mobile.classList.remove('open');
+      burger.setAttribute('aria-expanded', 'false');
+    });
+  });
+</script>
+</body>
+</html>
