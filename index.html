@@ -103,6 +103,18 @@
   .nav-links a.librus{background:#fff;border:2px solid var(--violet);color:var(--violet-600);padding:7px 15px}
   .nav-links a.librus:hover{background:var(--violet);color:#fff}
   .nav-links a.bip{font-weight:700;color:var(--violet-600)}
+  /* rozwijane menu „Dla rodziców" */
+  .dropdown{position:relative}
+  .dd-toggle{background:none;border:0;font:inherit;cursor:pointer;padding:9px 16px;border-radius:999px;font-size:.92rem;font-weight:600;color:var(--gray);display:inline-flex;align-items:center;gap:6px}
+  .dd-toggle:hover,.dropdown.open .dd-toggle{background:#f3f4f6;color:var(--violet-600)}
+  .dd-toggle .caret{font-size:.7rem;transition:transform .18s}
+  .dropdown.open .dd-toggle .caret{transform:rotate(180deg)}
+  .dd-menu{position:absolute;right:0;top:calc(100% + 8px);min-width:250px;background:#fff;border:1px solid var(--line);
+    border-radius:14px;box-shadow:0 18px 40px -18px rgba(0,0,0,.3);padding:8px;display:none;flex-direction:column;gap:2px;z-index:60}
+  .dropdown.open .dd-menu{display:flex}
+  .dd-menu a{padding:11px 14px;border-radius:10px;font-size:.94rem;font-weight:600;color:var(--gray);white-space:nowrap}
+  .dd-menu a:hover{background:var(--soft);color:var(--violet-600)}
+  .mobile .m-group{padding:16px 12px 4px;font-size:.74rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);font-weight:800}
   .burger{display:none;background:none;border:0;padding:8px;cursor:pointer;color:var(--ink)}
   .mobile{display:none;flex-direction:column;padding:8px 20px 16px;background:#fff;border-top:1px solid var(--line)}
   .mobile a{padding:13px 12px;border-radius:12px;color:var(--gray);font-weight:600}
@@ -275,10 +287,16 @@
       <a href="#about">O szkole</a>
       <a href="#offer">Oferta</a>
       <a href="#team">Kadra</a>
-      <a href="bip.html" class="bip">BIP</a>
+      <div class="dropdown" id="ddParents">
+        <button type="button" class="dd-toggle" id="ddBtn" aria-expanded="false" aria-haspopup="true" aria-controls="ddMenu">Dla rodziców <span class="caret" aria-hidden="true">▾</span></button>
+        <div class="dd-menu" id="ddMenu" role="menu" aria-label="Dla rodziców">
+          <a role="menuitem" href="https://portal.librus.pl/rodzina/synergia/loguj" target="_blank" rel="noopener">📚 Librus Synergia ↗</a>
+          <a role="menuitem" href="https://system.ordea.net/#/subscribe/eb776b52-c45c-41c9-8b68-74325ba28b8f" target="_blank" rel="noopener">🍽️ Zamów obiady ↗</a>
+          <a role="menuitem" href="bip.html">Biuletyn Informacji Publicznej (BIP)</a>
+          <a role="menuitem" href="deklaracja-dostepnosci.html">Deklaracja dostępności</a>
+        </div>
+      </div>
       <a href="#contact" class="cta">Kontakt</a>
-      <a href="https://system.ordea.net/#/subscribe/eb776b52-c45c-41c9-8b68-74325ba28b8f" target="_blank" rel="noopener" class="librus">🍽️ Obiady ↗</a>
-      <a href="https://portal.librus.pl/rodzina/synergia/loguj" target="_blank" rel="noopener" class="librus">📚 Librus ↗</a>
     </nav>
     <button class="burger" id="burger" aria-label="Otwórz menu" aria-expanded="false" aria-controls="mobile">
       <svg width="26" height="26" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
@@ -289,10 +307,12 @@
     <a href="#about">O szkole</a>
     <a href="#offer">Oferta</a>
     <a href="#team">Kadra</a>
-    <a href="bip.html">BIP</a>
     <a href="#contact">Kontakt</a>
-    <a href="https://system.ordea.net/#/subscribe/eb776b52-c45c-41c9-8b68-74325ba28b8f" target="_blank" rel="noopener" style="color:var(--violet-600);font-weight:700">🍽️ Obiady ↗</a>
-    <a href="https://portal.librus.pl/rodzina/synergia/loguj" target="_blank" rel="noopener" style="color:var(--violet-600);font-weight:700">📚 Librus ↗</a>
+    <div class="m-group">Dla rodziców</div>
+    <a href="https://portal.librus.pl/rodzina/synergia/loguj" target="_blank" rel="noopener" style="color:var(--violet-600);font-weight:700">📚 Librus Synergia ↗</a>
+    <a href="https://system.ordea.net/#/subscribe/eb776b52-c45c-41c9-8b68-74325ba28b8f" target="_blank" rel="noopener" style="color:var(--violet-600);font-weight:700">🍽️ Zamów obiady ↗</a>
+    <a href="bip.html">Biuletyn Informacji Publicznej (BIP)</a>
+    <a href="deklaracja-dostepnosci.html">Deklaracja dostępności</a>
   </nav>
 </header>
 
@@ -556,6 +576,23 @@
   document.querySelectorAll('.emoji, .em, .ico, .avatar').forEach(function(el){
     el.setAttribute('aria-hidden', 'true');
   });
+
+  // Rozwijane menu „Dla rodziców"
+  var ddBtn = document.getElementById('ddBtn');
+  var dd = document.getElementById('ddParents');
+  if(ddBtn && dd){
+    ddBtn.addEventListener('click', function(e){
+      e.stopPropagation();
+      var open = dd.classList.toggle('open');
+      ddBtn.setAttribute('aria-expanded', open);
+    });
+    document.addEventListener('click', function(e){
+      if(!dd.contains(e.target)){ dd.classList.remove('open'); ddBtn.setAttribute('aria-expanded','false'); }
+    });
+    document.addEventListener('keydown', function(e){
+      if(e.key==='Escape'){ dd.classList.remove('open'); ddBtn.setAttribute('aria-expanded','false'); }
+    });
+  }
 </script>
 </body>
 </html>
