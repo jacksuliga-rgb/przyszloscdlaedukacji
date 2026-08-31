@@ -287,11 +287,16 @@
       <a href="#about">O szkole</a>
       <a href="#offer">Oferta</a>
       <a href="#team">Kadra</a>
-      <div class="dropdown" id="ddParents">
-        <button type="button" class="dd-toggle" id="ddBtn" aria-expanded="false" aria-haspopup="true" aria-controls="ddMenu">Dla rodziców <span class="caret" aria-hidden="true">▾</span></button>
-        <div class="dd-menu" id="ddMenu" role="menu" aria-label="Dla rodziców">
+      <div class="dropdown">
+        <button type="button" class="dd-toggle" aria-expanded="false" aria-haspopup="true">Dla rodziców <span class="caret" aria-hidden="true">▾</span></button>
+        <div class="dd-menu" role="menu" aria-label="Dla rodziców">
           <a role="menuitem" href="https://portal.librus.pl/rodzina/synergia/loguj" target="_blank" rel="noopener">📚 Librus Synergia ↗</a>
           <a role="menuitem" href="https://system.ordea.net/#/subscribe/eb776b52-c45c-41c9-8b68-74325ba28b8f" target="_blank" rel="noopener">🍽️ Zamów obiady ↗</a>
+        </div>
+      </div>
+      <div class="dropdown">
+        <button type="button" class="dd-toggle" aria-expanded="false" aria-haspopup="true">Dokumenty <span class="caret" aria-hidden="true">▾</span></button>
+        <div class="dd-menu" role="menu" aria-label="Dokumenty">
           <a role="menuitem" href="bip.html">Biuletyn Informacji Publicznej (BIP)</a>
           <a role="menuitem" href="deklaracja-dostepnosci.html">Deklaracja dostępności</a>
         </div>
@@ -311,6 +316,7 @@
     <div class="m-group">Dla rodziców</div>
     <a href="https://portal.librus.pl/rodzina/synergia/loguj" target="_blank" rel="noopener" style="color:var(--violet-600);font-weight:700">📚 Librus Synergia ↗</a>
     <a href="https://system.ordea.net/#/subscribe/eb776b52-c45c-41c9-8b68-74325ba28b8f" target="_blank" rel="noopener" style="color:var(--violet-600);font-weight:700">🍽️ Zamów obiady ↗</a>
+    <div class="m-group">Dokumenty</div>
     <a href="bip.html">Biuletyn Informacji Publicznej (BIP)</a>
     <a href="deklaracja-dostepnosci.html">Deklaracja dostępności</a>
   </nav>
@@ -577,22 +583,25 @@
     el.setAttribute('aria-hidden', 'true');
   });
 
-  // Rozwijane menu „Dla rodziców"
-  var ddBtn = document.getElementById('ddBtn');
-  var dd = document.getElementById('ddParents');
-  if(ddBtn && dd){
-    ddBtn.addEventListener('click', function(e){
-      e.stopPropagation();
-      var open = dd.classList.toggle('open');
-      ddBtn.setAttribute('aria-expanded', open);
-    });
-    document.addEventListener('click', function(e){
-      if(!dd.contains(e.target)){ dd.classList.remove('open'); ddBtn.setAttribute('aria-expanded','false'); }
-    });
-    document.addEventListener('keydown', function(e){
-      if(e.key==='Escape'){ dd.classList.remove('open'); ddBtn.setAttribute('aria-expanded','false'); }
+  // Rozwijane menu w nawigacji (Dla rodziców, Dokumenty)
+  var dropdowns = Array.prototype.slice.call(document.querySelectorAll('.dropdown'));
+  function closeAll(except){
+    dropdowns.forEach(function(d){
+      if(d!==except){ d.classList.remove('open'); var b=d.querySelector('.dd-toggle'); if(b) b.setAttribute('aria-expanded','false'); }
     });
   }
+  dropdowns.forEach(function(d){
+    var btn=d.querySelector('.dd-toggle');
+    if(!btn) return;
+    btn.addEventListener('click', function(e){
+      e.stopPropagation();
+      var open=d.classList.toggle('open');
+      btn.setAttribute('aria-expanded', open);
+      if(open) closeAll(d);
+    });
+  });
+  document.addEventListener('click', function(){ closeAll(null); });
+  document.addEventListener('keydown', function(e){ if(e.key==='Escape') closeAll(null); });
 </script>
 </body>
 </html>
